@@ -51,3 +51,14 @@ h1, h2, h3, h4 {
 .post h1 a, .post h1 a:visited {
     color: #000000;
 }
+
+.taskbar{
+    color: blue;
+    float: right;
+    font-size: 14pt;
+    margin-right: 20px;
+}
+
+.kotaklogin{
+	font-family:'Comic Sans MS';
+}

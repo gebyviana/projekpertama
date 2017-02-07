@@ -1,0 +1,33 @@
+{% load staticfiles %}
+<htmL>
+    <head>
+        <title>Gebyviana's Blog</title>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    </head>
+    <body>
+		<br>
+		<center>
+        <h1>Silahkan Login</h1>
+        <form action="/login/" method="POST">
+            {% csrf_token %}
+
+            {% if messages %}
+              <ul>
+                {% for message in messages %}
+                  <li>{{ message }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+		<br>
+		<div class="kotaklogin">
+			<p>Username : <input type="text" name="username" value="" placeholder="username" /></p>
+            <p>Password : <input type="password" name="password" value="" placeholder="password" /></p>
+            <br><input type="submit" value="Log In" />
+		</div>
+        </form>
+		</center>
+    </body>
+</htmL>
