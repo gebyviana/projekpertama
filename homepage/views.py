@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, 	reverse
 from django.contrib.auth import authenticate, logout, login
 from django.contrib import messages
 
@@ -19,7 +19,7 @@ def login_view(request):
 					request.session['jenis_akun'] = akkun.jenis_akun
 					request.session['username'] = request.POST['username']
 				except:
-					return redirect('/')
+					return redirect('blog:post_list')
 			else:
 				messages.add_message(request, messages.INFO, 'User belum terverifikasi')
 		else:
@@ -30,3 +30,6 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('/login/')
+
+def login_redirect(request):
+    return redirect('/login/')	
