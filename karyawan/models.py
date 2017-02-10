@@ -4,12 +4,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
-class Bagian (models.Model):
-    nama = models.CharField(max_length=100)
-    keterangan =models.TextField(blank=True)
-
-    def __unicode__(self):
-        return self.nama
 
 class Karyawan (models.Model):
     JENIS_KARYAWAN_CHOICES = (
@@ -20,7 +14,6 @@ class Karyawan (models.Model):
     nama = models.CharField(max_length=100)
     alamat = models.TextField(blank=True)
     jenis_karyawan = models.CharField(max_length=20, choices=JENIS_KARYAWAN_CHOICES)
-    bagian = models.ForeignKey(Bagian)
     email = models.CharField(max_length=100, blank=True)
 
     def __unicode__(self):

@@ -2,22 +2,26 @@ from django.shortcuts import render, redirect, 	reverse
 from django.contrib.auth import authenticate, logout, login
 from django.contrib import messages
 
+from django.contrib.auth.backends import ModelBackend
+from django.http import HttpResponseForbidden, HttpResponse
+from django.template import RequestContext, loader
+from django.contrib.auth.models import User, Group
+
 from karyawan.models import Akun, Karyawan
-
-# Create your views here.
-
+		
 def login_view(request):
-	if request.POST:
+	if request.method == 'POST':
 		user = authenticate(username=request.POST['username'], password=request.POST['password'])
 		if user is not None:
 			if user.is_active:
 				try:
-					akkun = Akun.objects.get(akkun=user.id)
+					akun = Akun.objects.get(akun=user.id)
 					login(request, user)
-					
-					request.session['karyawan_id'] = akkun.karyawan.id
-					request.session['jenis_akun'] = akkun.jenis_akun
+
+					request.session['karyawan_id'] = akun.karyawan.id
+					request.session['jenis_akun'] = akun.jenis_akun
 					request.session['username'] = request.POST['username']
+					return redirect('blog:post_list')
 				except:
 					return redirect('blog:post_list')
 			else:
