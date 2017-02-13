@@ -10,7 +10,7 @@
 <body>
     <div class="page-header">
 		<a href="{% url 'blog:post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-        <center><h1><a href="blog/">Tutorial Memasak by Gebyviana</a></h1></center>
+        <center><h1><a href="{% url 'blog:post_list' %}">Tutorial Memasak by Gebyviana</a></h1></center>
 		<a href="/logout/" class="taskbar">Logout</a>
     </div>
     <div class="content container">

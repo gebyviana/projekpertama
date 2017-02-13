@@ -1,0 +1,24 @@
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+					
+                    <ul class="nav" id="side-menu">
+						<li>
+							<a href="/blog">Home</a>
+						</li>
+                        <li>
+                            <a href="/blog/appetizer">Appetizer<span class="fa arrow"></span></a>
+                        </li>
+                        <li>
+                            <a href="/blog/maincourse">Main Course<span class="fa arrow"></span></a>
+                        </li>
+                        <li>
+                            <a href="/blog/dessert">Dessert<span class="fa arrow"></span></a>
+                        </li>
+						<li>
+                            <a href="{% url 'blog:post_new' %}">Tambah Post<span class="fa plus"></span></a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->

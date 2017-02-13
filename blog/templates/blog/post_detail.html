@@ -1,15 +1,15 @@
-{% extends 'blog/base.html' %}
+{% extends "layout/base.html" %}
 
 {% block content %}
     <div class="post">
         {% if post.published_date %}
-            <div class="date">
-                Published : {{ post.published_date }}
-				<br>Author : {{ post.author }}
+            <div class="date" style="float : right">
+                Published : {{ post.published_date }} | Author : {{ post.author }}
             </div>
         {% endif %}
 		{% if post.author.username == user.username %}
 			<a class="btn btn-default" href="{% url 'blog:post_edit' pk=post.pk %}"style="float : right"><span class="glyphicon glyphicon-pencil"></span></a>
+			<a class="btn btn-default" href="{% url 'blog:hapus' pk=post.pk %}"style="float : right"><span class="glyphicon glyphicon-trash"></span></a>
 		{% endif %}
         <h1>{{ post.title }}</h1>
         <p>{{ post.text|linebreaksbr }}</p>

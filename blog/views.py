@@ -26,7 +26,7 @@ def post_new(request):
 			return render(request, 'blog/post_detail.html', {'post': post})
 	else:
 		form = PostForm()
-	return render(request, 'blog/post_edit.html', {'form': form})
+	return render(request, 'blog/post_new.html', {'form': form})
 
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -41,3 +41,21 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
+
+def appetizer(request):
+	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	return render(request, 'new/appetizer.html', {'posts': posts})
+	
+def maincourse(request):
+	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	return render(request, 'new/maincourse.html', {'posts': posts})
+	
+def dessert(request):
+	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	return render(request, 'new/dessert.html', {'posts': posts})
+	
+def hapus(request, pk):
+	post = get_object_or_404(Post, pk=pk)
+	categories = post.categories
+	post.delete()
+	return redirect('blog:'+categories)

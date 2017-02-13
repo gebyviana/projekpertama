@@ -2,10 +2,6 @@ from django.shortcuts import render, redirect, 	reverse
 from django.contrib.auth import authenticate, logout, login
 from django.contrib import messages
 
-from django.contrib.auth.backends import ModelBackend
-from django.http import HttpResponseForbidden, HttpResponse
-from django.template import RequestContext, loader
-from django.contrib.auth.models import User, Group
 
 from karyawan.models import Akun, Karyawan
 		
@@ -29,7 +25,7 @@ def login_view(request):
 		else:
 			messages.add_message(request, messages.INFO, 'Username atau password Anda salah')
 			
-	return render(request, 'login.html')
+	return render(request, 'new/login.html')
 
 def logout_view(request):
     logout(request)

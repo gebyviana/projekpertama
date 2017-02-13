@@ -1,0 +1,17 @@
+{% extends "layout/base-login.html" %}
+
+<body>
+    <div class="page-header">
+		<a href="{% url 'blog:post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+        <h1 class="page-header">Tutorial Memasak by Gebyviana</h1>
+		<a href="/logout/" class="taskbar">Logout</a>
+    </div>
+    <div class="content container">
+        <div class="row">
+            <div class>
+            {% block content %}
+            {% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
