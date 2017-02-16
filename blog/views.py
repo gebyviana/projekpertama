@@ -42,17 +42,9 @@ def post_edit(request, pk):
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
 
-def appetizer(request):
-	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-	return render(request, 'new/appetizer.html', {'posts': posts})
-	
-def maincourse(request):
-	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-	return render(request, 'new/maincourse.html', {'posts': posts})
-	
-def dessert(request):
-	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-	return render(request, 'new/dessert.html', {'posts': posts})
+def kategori(request, categories):
+	posts = Post.objects.filter(categories=categories, published_date__lte=timezone.now()).order_by('title')
+	return render(request, 'new/categories.html', {'posts': posts})
 	
 def hapus(request, pk):
 	post = get_object_or_404(Post, pk=pk)
