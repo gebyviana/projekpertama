@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 	'blog',
 	'homepage',
 	'karyawan',
+    'static',
 ]
 
 MIDDLEWARE = [
